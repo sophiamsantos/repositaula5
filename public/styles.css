@@ -318,8 +318,8 @@ body {
 }
 
 .catalogo .catalogo__grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 24px;
 }
 
@@ -328,7 +328,6 @@ body {
     background: white;
     border-radius: 10px;
     overflow: hidden;
-    width: calc(25% - 18px);
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s, box-shadow 0.3s;
     position: relative;
@@ -515,4 +514,209 @@ body {
 
 .footer__social-link:hover {
     color: #e94560;
+}
+
+/* ========== RESPONSIVIDADE - TABLET (max 1024px) ========== */
+@media (max-width: 1024px) {
+    .catalogo .catalogo__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .header__search-form input[type="text"] {
+        width: 240px;
+    }
+}
+
+/* ========== RESPONSIVIDADE - TABLET PEQUENO (max 768px) ========== */
+@media (max-width: 768px) {
+    /* Header */
+    .header {
+        flex-wrap: wrap;
+        padding: 14px 20px;
+        gap: 12px;
+    }
+
+    .header__nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 8px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        padding: 12px 16px;
+    }
+
+    .header__nav.header__nav--open {
+        display: flex;
+    }
+
+    .header__menu-toggle {
+        display: block;
+    }
+
+    .header .header__search-form {
+        width: 100%;
+        order: 3;
+    }
+
+    .header__search-form input[type="text"] {
+        width: 100%;
+        flex: 1;
+    }
+
+    /* Layout: sidebar vira horizontal */
+    .container {
+        flex-direction: column;
+    }
+
+    .menu {
+        width: 100%;
+        position: static;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .menu .menu__list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 12px 8px;
+        gap: 4px;
+    }
+
+    .menu .menu__list .menu__item {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+
+    .menu__list .menu__item--active {
+        background: #fef0f2;
+        border-radius: 8px;
+    }
+
+    .menu__list .menu__item:hover {
+        padding-left: 16px;
+    }
+
+    .menu .menu__login {
+        display: none;
+    }
+
+    /* Main */
+    .main {
+        padding: 20px;
+    }
+
+    /* Grid cards */
+    .catalogo .catalogo__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    /* Banner */
+    .main .banner img {
+        height: 220px;
+    }
+
+    .banner__overlay .banner__title {
+        font-size: 22px;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 20px;
+    }
+
+    .footer .footer__content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer__info {
+        align-items: center;
+    }
+
+    .footer__content .footer__links {
+        justify-content: center;
+    }
+
+    .footer__social {
+        justify-content: center;
+    }
+}
+
+/* ========== RESPONSIVIDADE - MOBILE (max 480px) ========== */
+@media (max-width: 480px) {
+    .header {
+        padding: 12px 16px;
+    }
+
+    .header .header__logo {
+        font-size: 20px;
+    }
+
+    .header__search-form .header__search-select {
+        display: none;
+    }
+
+    .main {
+        padding: 14px;
+    }
+
+    .intro {
+        padding: 18px 20px;
+    }
+
+    .intro__title {
+        font-size: 18px;
+    }
+
+    .intro__text {
+        font-size: 14px;
+    }
+
+    .catalogo .catalogo__grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .catalogo__card .catalogo__card-info {
+        padding: 12px 14px 16px;
+    }
+
+    .catalogo__card-info .catalogo__card-title {
+        font-size: 15px;
+    }
+
+    .main .banner img {
+        height: 160px;
+    }
+
+    .banner__overlay {
+        padding: 25px 16px 18px;
+    }
+
+    .banner__overlay .banner__title {
+        font-size: 18px;
+    }
+
+    .banner__overlay .banner__subtitle {
+        font-size: 13px;
+    }
+
+    .catalogo .catalogo__titulo {
+        font-size: 18px;
+    }
+
+    .footer__content .footer__links {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .footer__social {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
 }

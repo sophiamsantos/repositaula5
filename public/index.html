@@ -167,6 +167,14 @@
 </footer>
 
 <script>
+    // ===== MENU HAMBÚRGUER =====
+    var menuToggle = document.getElementById('menuToggle');
+    var headerNav = document.querySelector('.header__nav');
+
+    menuToggle.addEventListener('click', function() {
+        headerNav.classList.toggle('header__nav--open');
+    });
+
     // ===== BUSCA =====
     var searchForm = document.getElementById('searchForm');
     var searchInput = document.getElementById('searchInput');
