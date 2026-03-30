@@ -20,6 +20,12 @@ Nessa atividade,vamos evoluir o projeto para que a home-page funcione bem tanto 
 
 ## Print da Home-Page
 
-![Home-Page do CineList](public/imagens/homepage.png)
+### Versão Desktop (CSS Puro)
 
+![Home-Page Desktop](public/imagens/homepage.png)
 
+### Versão Mobile (CSS Puro)
+
+> **Nota:** Tire um print da versão mobile usando o DevTools do navegador (F12 > ícone de dispositivo móvel) e salve como `public/imagens/homepage-mobile.png`, depois atualize este README.
+
+![Home-Page Mobile](public/imagens/homepage-mobile.png)
