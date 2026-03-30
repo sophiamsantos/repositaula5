@@ -39,6 +39,37 @@ body {
     font-size: 28px;
 }
 
+/* Navegação do header */
+.header__nav {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.header__nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s;
+    white-space: nowrap;
+}
+
+.header__nav-link:hover {
+    color: #e94560;
+}
+
+/* Botão hambúrguer (oculto no desktop) */
+.header__menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 26px;
+    cursor: pointer;
+    padding: 4px 8px;
+}
+
 /* Seletores combinados: form dentro do header */
 .header .header__search-form {
     display: flex;
@@ -213,6 +244,29 @@ body {
 .main {
     flex: 1;
     padding: 30px;
+}
+
+/* ========== INTRODUÇÃO ========== */
+.intro {
+    margin-bottom: 30px;
+    padding: 25px 30px;
+    background: white;
+    border-radius: 12px;
+    border-left: 4px solid #e94560;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+}
+
+.intro__title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 10px;
+}
+
+.intro__text {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.7;
 }
 
 /* ========== BANNER ========== */
@@ -408,7 +462,7 @@ body {
 .footer {
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
     color: rgba(255, 255, 255, 0.7);
-    padding: 20px 40px;
+    padding: 25px 40px;
     margin-top: auto;
     position: relative;
 }
@@ -417,6 +471,14 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.footer__info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .footer__content .footer__text {
@@ -436,5 +498,21 @@ body {
 }
 
 .footer__links .footer__link:hover {
+    color: #e94560;
+}
+
+.footer__social {
+    display: flex;
+    gap: 16px;
+}
+
+.footer__social-link {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.3s;
+}
+
+.footer__social-link:hover {
     color: #e94560;
 }

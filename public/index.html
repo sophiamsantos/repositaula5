@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>CineList - Catálogo de Filmes e Séries</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -14,6 +15,13 @@
         <span class="header__logo-icon">&#127916;</span> CineList
     </h1>
 
+    <nav class="header__nav">
+        <a href="#inicio" class="header__nav-link">Início</a>
+        <a href="#catalogo" class="header__nav-link">Catálogo</a>
+        <a href="#destaques" class="header__nav-link">Destaques</a>
+        <a href="#contato" class="header__nav-link">Contato</a>
+    </nav>
+
     <form class="header__search-form" id="searchForm">
         <input type="text" name="busca" id="searchInput" placeholder="Pesquisar filmes, séries, atores...">
         <select name="tipo" class="header__search-select" id="searchType">
@@ -23,6 +31,8 @@
         </select>
         <button type="submit" class="header__search-btn">Buscar</button>
     </form>
+
+    <button class="header__menu-toggle" id="menuToggle" aria-label="Abrir menu">&#9776;</button>
 </header>
 
 <div class="container">
@@ -57,9 +67,14 @@
         </div>
     </nav>
 
-    <main class="main">
+    <main class="main" id="inicio">
 
-        <section class="banner">
+        <section class="intro">
+            <h2 class="intro__title">Bem-vindo ao CineList</h2>
+            <p class="intro__text">Sua plataforma para descobrir, organizar e explorar os melhores filmes e séries. Navegue pelo catálogo, filtre por gênero, favorite seus títulos preferidos e monte sua lista personalizada.</p>
+        </section>
+
+        <section class="banner" id="destaques">
             <img src="imagens/harrypotter1.png" alt="Banner Harry Potter">
             <div class="banner__overlay">
                 <h2 class="banner__title">Destaques da Semana</h2>
@@ -67,7 +82,7 @@
             </div>
         </section>
 
-        <section class="catalogo">
+        <section class="catalogo" id="catalogo">
             <h2 class="catalogo__titulo" id="catalogoTitulo">Populares</h2>
 
             <div class="catalogo__grid" id="catalogoGrid">
@@ -133,13 +148,20 @@
 
 </div>
 
-<footer class="footer">
+<footer class="footer" id="contato">
     <div class="footer__content">
-        <p class="footer__text">&copy; 2026 CineList - Organize seus filmes e séries favoritos</p>
-        <div class="footer__links">
-            <a href="#" class="footer__link">Sobre</a>
-            <a href="#" class="footer__link">Contato</a>
-            <a href="#" class="footer__link">Termos de Uso</a>
+        <div class="footer__info">
+            <p class="footer__text">&copy; 2026 CineList - Organize seus filmes e séries favoritos</p>
+            <div class="footer__links">
+                <a href="#" class="footer__link">Sobre</a>
+                <a href="#" class="footer__link">Contato</a>
+                <a href="#" class="footer__link">Termos de Uso</a>
+            </div>
+        </div>
+        <div class="footer__social">
+            <a href="#" class="footer__social-link" aria-label="Instagram">&#128247; Instagram</a>
+            <a href="#" class="footer__social-link" aria-label="Twitter">&#128038; Twitter</a>
+            <a href="#" class="footer__social-link" aria-label="YouTube">&#9654; YouTube</a>
         </div>
     </div>
 </footer>
