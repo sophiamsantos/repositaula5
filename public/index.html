@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <title>CineList - Catálogo de Filmes e Séries</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Estilos próprios -->
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -15,140 +20,68 @@
         <span class="header__logo-icon">&#127916;</span> CineList
     </h1>
 
-    <nav class="header__nav">
+    <nav class="header__nav" id="headerNav">
         <a href="#inicio" class="header__nav-link">Início</a>
-        <a href="#catalogo" class="header__nav-link">Catálogo</a>
         <a href="#destaques" class="header__nav-link">Destaques</a>
-        <a href="#contato" class="header__nav-link">Contato</a>
+        <a href="#catalogo" class="header__nav-link">Catálogo</a>
+        <a href="#aluno" class="header__nav-link">Sobre</a>
     </nav>
-
-    <form class="header__search-form" id="searchForm">
-        <input type="text" name="busca" id="searchInput" placeholder="Pesquisar filmes, séries, atores...">
-        <select name="tipo" class="header__search-select" id="searchType">
-            <option value="todos">Todos</option>
-            <option value="filme">Filmes</option>
-            <option value="serie">Séries</option>
-        </select>
-        <button type="submit" class="header__search-btn">Buscar</button>
-    </form>
 
     <button class="header__menu-toggle" id="menuToggle" aria-label="Abrir menu">&#9776;</button>
 </header>
 
-<div class="container">
+<main class="main container-fluid py-4 py-md-5" id="inicio">
 
-    <nav class="menu">
-        <ul class="menu__list">
-            <li class="menu__item menu__item--active" data-page="inicio">
-                <span class="menu__icon">&#127968;</span> Início
-            </li>
-            <li class="menu__item" data-page="filmes">
-                <span class="menu__icon">&#127910;</span> Filmes
-            </li>
-            <li class="menu__item" data-page="series">
-                <span class="menu__icon">&#128250;</span> Séries
-            </li>
-            <li class="menu__item" data-page="favoritos">
-                <span class="menu__icon">&#11088;</span> Favoritos
-            </li>
-        </ul>
+    <!-- Introdução -->
+    <section class="intro mb-4">
+        <h2 class="intro__title">Bem-vindo ao CineList</h2>
+        <p class="intro__text">
+            Sua plataforma para descobrir, organizar e explorar os melhores filmes e séries.
+            Confira os títulos em destaque no carrossel, navegue pelo catálogo completo e clique em qualquer card para ver mais detalhes.
+        </p>
+    </section>
 
-        <div class="menu__login" id="loginSection">
-            <p class="menu__login-title">Acesse sua conta</p>
-            <form class="menu__login-form" id="loginForm">
-                <input type="email" name="email" id="loginEmail" placeholder="E-mail" required>
-                <input type="password" name="senha" id="loginPassword" placeholder="Senha" required>
-                <button type="submit" class="menu__login-btn">Entrar</button>
-            </form>
-            <div class="menu__login-welcome" id="loginWelcome" style="display: none;">
-                <p class="menu__login-user"></p>
-                <button class="menu__login-logout" id="logoutBtn">Sair</button>
+    <!-- Seção 1 - Itens em Destaque (Carrossel Bootstrap) -->
+    <section class="destaques mb-5" id="destaques">
+        <h2 class="secao__titulo">Em Destaque</h2>
+
+        <div id="carrosselDestaques" class="carousel slide carrossel" data-bs-ride="carousel" data-bs-interval="5000">
+            <div class="carousel-indicators" id="carrosselIndicadores"></div>
+
+            <div class="carousel-inner" id="carrosselSlides">
+                <!-- Slides preenchidos via JavaScript -->
             </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carrosselDestaques" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carrosselDestaques" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Próximo</span>
+            </button>
         </div>
-    </nav>
+    </section>
 
-    <main class="main" id="inicio">
+    <!-- Seção 2 - Catálogo agrupado por categorias -->
+    <section class="catalogo mb-5" id="catalogo">
+        <h2 class="secao__titulo">Catálogo por Categoria</h2>
+        <div id="catalogoGrid">
+            <!-- Categorias e cards preenchidas via JavaScript -->
+        </div>
+    </section>
 
-        <section class="intro">
-            <h2 class="intro__title">Bem-vindo ao CineList</h2>
-            <p class="intro__text">Sua plataforma para descobrir, organizar e explorar os melhores filmes e séries. Navegue pelo catálogo, filtre por gênero, favorite seus títulos preferidos e monte sua lista personalizada.</p>
-        </section>
+    <!-- Seção 3 - Informações do(a) aluno(a) -->
+    <section class="aluno mb-4" id="aluno">
+        <h2 class="secao__titulo">Informações do(a) Aluno(a)</h2>
+        <div class="aluno__box" id="alunoInfo">
+            <!-- Conteúdo preenchido via JavaScript -->
+        </div>
+    </section>
 
-        <section class="banner" id="destaques">
-            <img src="imagens/harrypotter1.png" alt="Banner Harry Potter">
-            <div class="banner__overlay">
-                <h2 class="banner__title">Destaques da Semana</h2>
-                <p class="banner__subtitle">Confira os filmes e séries mais assistidos</p>
-            </div>
-        </section>
+</main>
 
-        <section class="catalogo" id="catalogo">
-            <h2 class="catalogo__titulo" id="catalogoTitulo">Populares</h2>
-
-            <div class="catalogo__grid" id="catalogoGrid">
-
-                <article class="catalogo__card" data-nome="Harry Potter e a Pedra Filosofal" data-genero="Fantasia / Aventura" data-tipo="filme">
-                    <div class="catalogo__card-img">
-                        <img src="imagens/harrypotter1.png" alt="Harry Potter e a Pedra Filosofal">
-                        <span class="catalogo__card-badge">9.0</span>
-                    </div>
-                    <div class="catalogo__card-info">
-                        <h3 class="catalogo__card-title">Harry Potter e a Pedra Filosofal</h3>
-                        <p class="catalogo__card-genre">Gênero: Fantasia / Aventura</p>
-                        <p class="catalogo__card-rating">Nota: 9.0 / 10</p>
-                        <button class="catalogo__card-fav" title="Adicionar aos favoritos">&#9825; Favoritar</button>
-                    </div>
-                </article>
-
-                <article class="catalogo__card" data-nome="Peaky Blinders" data-genero="Drama / Crime" data-tipo="serie">
-                    <div class="catalogo__card-img">
-                        <img src="imagens/peakblin.jpeg" alt="Peaky Blinders">
-                        <span class="catalogo__card-badge">9.3</span>
-                    </div>
-                    <div class="catalogo__card-info">
-                        <h3 class="catalogo__card-title">Peaky Blinders</h3>
-                        <p class="catalogo__card-genre">Gênero: Drama / Crime</p>
-                        <p class="catalogo__card-rating">Nota: 9.3 / 10</p>
-                        <button class="catalogo__card-fav" title="Adicionar aos favoritos">&#9825; Favoritar</button>
-                    </div>
-                </article>
-
-                <article class="catalogo__card" data-nome="Diário de Uma Paixão" data-genero="Romance / Drama" data-tipo="filme">
-                    <div class="catalogo__card-img">
-                        <img src="imagens/diariodeumapaixao.jpg" alt="Diário de Uma Paixão">
-                        <span class="catalogo__card-badge">8.5</span>
-                    </div>
-                    <div class="catalogo__card-info">
-                        <h3 class="catalogo__card-title">Diário de Uma Paixão</h3>
-                        <p class="catalogo__card-genre">Gênero: Romance / Drama</p>
-                        <p class="catalogo__card-rating">Nota: 8.5 / 10</p>
-                        <button class="catalogo__card-fav" title="Adicionar aos favoritos">&#9825; Favoritar</button>
-                    </div>
-                </article>
-
-                <article class="catalogo__card" data-nome="Simplesmente Acontece" data-genero="Romance / Comédia" data-tipo="filme">
-                    <div class="catalogo__card-img">
-                        <img src="imagens/simplismenteacontece.jpg" alt="Simplesmente Acontece">
-                        <span class="catalogo__card-badge">7.8</span>
-                    </div>
-                    <div class="catalogo__card-info">
-                        <h3 class="catalogo__card-title">Simplesmente Acontece</h3>
-                        <p class="catalogo__card-genre">Gênero: Romance / Comédia</p>
-                        <p class="catalogo__card-rating">Nota: 7.8 / 10</p>
-                        <button class="catalogo__card-fav" title="Adicionar aos favoritos">&#9825; Favoritar</button>
-                    </div>
-                </article>
-
-            </div>
-
-            <p class="catalogo__no-results" id="noResults" style="display: none;">Nenhum resultado encontrado.</p>
-        </section>
-
-    </main>
-
-</div>
-
-<footer class="footer" id="contato">
+<footer class="footer">
     <div class="footer__content">
         <div class="footer__info">
             <p class="footer__text">&copy; 2026 CineList - Organize seus filmes e séries favoritos</p>
@@ -166,158 +99,10 @@
     </div>
 </footer>
 
-<script>
-    // ===== MENU HAMBÚRGUER =====
-    var menuToggle = document.getElementById('menuToggle');
-    var headerNav = document.querySelector('.header__nav');
-
-    menuToggle.addEventListener('click', function() {
-        headerNav.classList.toggle('header__nav--open');
-    });
-
-    // ===== BUSCA =====
-    var searchForm = document.getElementById('searchForm');
-    var searchInput = document.getElementById('searchInput');
-    var searchType = document.getElementById('searchType');
-    var cards = document.querySelectorAll('.catalogo__card');
-    var noResults = document.getElementById('noResults');
-    var catalogoTitulo = document.getElementById('catalogoTitulo');
-
-    searchForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        filtrarCards();
-    });
-
-    searchInput.addEventListener('input', function() {
-        filtrarCards();
-    });
-
-    searchType.addEventListener('change', function() {
-        filtrarCards();
-    });
-
-    function filtrarCards() {
-        var termo = searchInput.value.toLowerCase().trim();
-        var tipo = searchType.value;
-        var visivel = 0;
-
-        cards.forEach(function(card) {
-            var nome = card.getAttribute('data-nome').toLowerCase();
-            var genero = card.getAttribute('data-genero').toLowerCase();
-            var cardTipo = card.getAttribute('data-tipo');
-
-            var matchTexto = nome.includes(termo) || genero.includes(termo);
-            var matchTipo = tipo === 'todos' || cardTipo === tipo;
-
-            if (matchTexto && matchTipo) {
-                card.style.display = '';
-                visivel++;
-            } else {
-                card.style.display = 'none';
-            }
-        });
-
-        noResults.style.display = visivel === 0 ? 'block' : 'none';
-    }
-
-    // ===== MENU LATERAL =====
-    var menuItems = document.querySelectorAll('.menu__item');
-
-    menuItems.forEach(function(item) {
-        item.addEventListener('click', function() {
-            menuItems.forEach(function(i) { i.classList.remove('menu__item--active'); });
-            item.classList.add('menu__item--active');
-
-            var page = item.getAttribute('data-page');
-
-            if (page === 'filmes') {
-                searchType.value = 'filme';
-                searchInput.value = '';
-                catalogoTitulo.textContent = 'Filmes';
-                filtrarCards();
-            } else if (page === 'series') {
-                searchType.value = 'serie';
-                searchInput.value = '';
-                catalogoTitulo.textContent = 'Séries';
-                filtrarCards();
-            } else if (page === 'favoritos') {
-                catalogoTitulo.textContent = 'Favoritos';
-                searchType.value = 'todos';
-                searchInput.value = '';
-                mostrarFavoritos();
-            } else {
-                searchType.value = 'todos';
-                searchInput.value = '';
-                catalogoTitulo.textContent = 'Populares';
-                filtrarCards();
-            }
-        });
-    });
-
-    // ===== FAVORITOS =====
-    var favBtns = document.querySelectorAll('.catalogo__card-fav');
-
-    favBtns.forEach(function(btn) {
-        btn.addEventListener('click', function() {
-            var card = btn.closest('.catalogo__card');
-            var nome = card.getAttribute('data-nome');
-
-            if (btn.classList.contains('catalogo__card-fav--active')) {
-                btn.classList.remove('catalogo__card-fav--active');
-                btn.innerHTML = '&#9825; Favoritar';
-                card.removeAttribute('data-fav');
-            } else {
-                btn.classList.add('catalogo__card-fav--active');
-                btn.innerHTML = '&#9829; Favoritado';
-                card.setAttribute('data-fav', 'true');
-            }
-        });
-    });
-
-    function mostrarFavoritos() {
-        var visivel = 0;
-
-        cards.forEach(function(card) {
-            if (card.getAttribute('data-fav') === 'true') {
-                card.style.display = '';
-                visivel++;
-            } else {
-                card.style.display = 'none';
-            }
-        });
-
-        noResults.style.display = visivel === 0 ? 'block' : 'none';
-        if (visivel === 0) {
-            noResults.textContent = 'Você ainda não favoritou nenhum título.';
-        } else {
-            noResults.textContent = 'Nenhum resultado encontrado.';
-        }
-    }
-
-    // ===== LOGIN =====
-    var loginForm = document.getElementById('loginForm');
-    var loginWelcome = document.getElementById('loginWelcome');
-    var logoutBtn = document.getElementById('logoutBtn');
-
-    loginForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        var email = document.getElementById('loginEmail').value;
-        var nome = email.split('@')[0];
-
-        loginForm.style.display = 'none';
-        loginWelcome.style.display = 'block';
-        loginWelcome.querySelector('.menu__login-user').textContent = 'Olá, ' + nome + '!';
-        document.querySelector('.menu__login-title').textContent = 'Conectado';
-    });
-
-    logoutBtn.addEventListener('click', function() {
-        loginForm.style.display = '';
-        loginWelcome.style.display = 'none';
-        document.getElementById('loginEmail').value = '';
-        document.getElementById('loginPassword').value = '';
-        document.querySelector('.menu__login-title').textContent = 'Acesse sua conta';
-    });
-</script>
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Aplicação -->
+<script src="app.js"></script>
 
 </body>
 </html>
