@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(npx --version)",
+      "Bash(npm install *)",
+      "Bash(npm start *)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(curl -s http://localhost:3000/titulos)",
+      "Bash(node -e \"let d='';process.stdin.on\\('data',c=>d+=c\\).on\\('end',\\(\\)=>console.log\\(JSON.parse\\(d\\).length,'titulos'\\)\\)\")",
+      "Bash(curl -s \"http://localhost:3000/aluno\")",
+      "Bash(node -e \"let d='';process.stdin.on\\('data',c=>d+=c\\).on\\('end',\\(\\)=>console.log\\(JSON.parse\\(d\\).nome\\)\\)\")",
+      "Bash(curl -s \"http://localhost:3000/usuarios?login=admin&senha=123\")",
+      "Bash(node -e \"let d='';process.stdin.on\\('data',c=>d+=c\\).on\\('end',\\(\\)=>{let u=JSON.parse\\(d\\);console.log\\(u.length?\\('OK admin='+u[0].admin\\):'FALHOU'\\)}\\)\")",
+      "Bash(curl -s \"http://localhost:3000/favoritos?usuarioId=ec37c83d-4b7f-458d-9e10-3fda7d37cd3e\")",
+      "Bash(node -e \"let d='';process.stdin.on\\('data',c=>d+=c\\).on\\('end',\\(\\)=>console.log\\(JSON.parse\\(d\\).length,'favoritos'\\)\\)\")",
+      "Bash(curl -s -o /dev/null -w \"Servidor: HTTP %{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(node -e \"let d='';process.stdin.on\\('data',c=>d+=c\\).on\\('end',\\(\\)=>{let u=JSON.parse\\(d\\);console.log\\(u.length?\\('Login admin OK -> admin='+u[0].admin\\):'sem resultado'\\)}\\)\")",
+      "PowerShell(Get-Process *)",
+      "Bash(mkdir -p db public/assets/css public/assets/img public/assets/scripts)",
+      "Bash(mv db.json db/db.json)",
+      "Bash(mv public/styles.css public/assets/css/styles.css)",
+      "Bash(mv public/app.js public/assets/scripts/app.js)",
+      "Bash(mv public/cadastro.html public/cadastro_itens.html)",
+      "Bash(node --check public/assets/scripts/app.js)",
+      "Bash(node --check public/assets/scripts/login.js)"
+    ]
+  }
+}

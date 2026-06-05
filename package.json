@@ -1,0 +1,12 @@
+{
+  "name": "cinelist",
+  "version": "2.0.0",
+  "description": "CineList - Catálogo de Filmes e Séries com login, favoritos, pesquisa e CRUD sobre JSON Server (TP2)",
+  "scripts": {
+    "start": "json-server --watch db/db.json --static ./public --port 3000",
+    "dev": "json-server --watch db/db.json --static ./public --port 3000"
+  },
+  "dependencies": {
+    "json-server": "^0.17.4"
+  }
+}

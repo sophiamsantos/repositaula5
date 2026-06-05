@@ -947,3 +947,460 @@ a {
 
     .aluno__box { padding: 22px 18px; }
 }
+
+/* ========================================================
+   TP2 - Menu dinâmico, favoritos, pesquisa, gráfico,
+   autenticação e CRUD
+   ======================================================== */
+
+/* ---- Menu dinâmico (login/logout/usuário) ---- */
+.header__dinamico {
+    display: inline-flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.header__nav-link--destaque {
+    background: var(--color-accent);
+    color: #fff !important;
+    padding: 7px 18px;
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+.header__nav-link--destaque:hover {
+    background: var(--color-accent-dark);
+}
+
+.header__usuario {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.header__btn-logout {
+    background: transparent;
+    border: 1.5px solid var(--color-border);
+    color: var(--color-text-soft);
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.header__btn-logout:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+/* ---- Botão de favorito (coração) ---- */
+.fav-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 4;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(20, 21, 43, 0.7);
+    backdrop-filter: blur(6px);
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.18s, background 0.2s;
+    line-height: 1;
+}
+
+.fav-btn:hover {
+    transform: scale(1.12);
+    background: rgba(20, 21, 43, 0.9);
+}
+
+.fav-btn__icon {
+    font-size: 20px;
+    color: #fff;
+}
+
+.fav-btn--ativo {
+    background: var(--color-accent);
+}
+
+.fav-btn--ativo .fav-btn__icon {
+    color: #fff;
+}
+
+/* ---- Pesquisa do catálogo ---- */
+.catalogo__topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+}
+
+.catalogo__pesquisa {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex: 1;
+    max-width: 460px;
+    min-width: 240px;
+}
+
+.catalogo__pesquisa-input {
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+    padding: 10px 18px;
+    font-size: 14px;
+}
+
+.catalogo__pesquisa-input:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 0.18rem rgba(233, 69, 96, 0.15);
+}
+
+.catalogo__pesquisa-btn {
+    border-radius: 999px;
+    background: var(--color-accent);
+    color: #fff;
+    border: none;
+    padding: 9px 16px;
+    font-size: 15px;
+}
+
+.catalogo__pesquisa-btn:hover {
+    background: var(--color-accent-dark);
+    color: #fff;
+}
+
+.catalogo__pesquisa-limpar {
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-soft);
+    background: transparent;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 16px;
+}
+
+.catalogo__pesquisa-limpar:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+.catalogo__vazio {
+    text-align: center;
+    padding: 48px 20px;
+    color: var(--color-text-muted);
+    font-size: 15px;
+}
+
+/* Card agora é div com âncoras internas */
+.catalogo__card-imglink {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* ---- Gráfico ---- */
+.grafico__box {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 28px 32px;
+    box-shadow: var(--shadow-sm);
+}
+
+.grafico__legenda {
+    font-size: 14px;
+    color: var(--color-text-soft);
+    margin-bottom: 18px;
+}
+
+.grafico__canvas-wrap {
+    position: relative;
+    height: 360px;
+}
+
+/* ---- Aluno: avatar e redes ---- */
+.aluno__avatar {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto;
+    border: 4px solid var(--color-accent);
+    box-shadow: var(--shadow-md);
+}
+
+.aluno__redes {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.aluno__rede {
+    text-decoration: none;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--color-accent);
+    border: 1.5px solid rgba(233, 69, 96, 0.4);
+    padding: 5px 14px;
+    border-radius: 999px;
+    transition: all 0.2s;
+}
+
+.aluno__rede:hover {
+    background: var(--color-accent);
+    color: #fff;
+}
+
+/* ---- Página de favoritos ---- */
+.favoritos__cabecalho {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+
+.favoritos__contador {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    background: rgba(233, 69, 96, 0.12);
+    color: var(--color-accent);
+    padding: 5px 14px;
+    border-radius: 999px;
+}
+
+.favoritos__row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.favoritos__row .categoria__card {
+    flex: none;
+}
+
+.favoritos__vazio {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--color-text-soft);
+}
+
+.favoritos__vazio-icone {
+    font-size: 56px;
+    color: var(--color-accent);
+    margin-bottom: 12px;
+}
+
+.favoritos__vazio h4 {
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+/* ---- Autenticação (login / cadastro de usuário) ---- */
+.auth__card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 36px 34px;
+    box-shadow: var(--shadow-md);
+    height: 100%;
+}
+
+.auth__titulo {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    margin-bottom: 6px;
+}
+
+.auth__sub {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    margin-bottom: 24px;
+}
+
+.auth__btn {
+    background: var(--color-accent);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    font-weight: 600;
+    padding: 11px 26px;
+    font-size: 14.5px;
+    transition: background 0.2s;
+}
+
+.auth__btn:hover {
+    background: var(--color-accent-dark);
+    color: #fff;
+}
+
+.auth__btn--alt {
+    background: var(--color-dark);
+}
+
+.auth__btn--alt:hover {
+    background: #20223f;
+}
+
+.auth__btn--ghost {
+    background: transparent;
+    border: 1.5px solid var(--color-border);
+    color: var(--color-text-soft);
+    border-radius: 999px;
+    font-weight: 600;
+    padding: 11px 26px;
+    font-size: 14.5px;
+}
+
+.auth__btn--ghost:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+.auth__troca {
+    font-size: 13.5px;
+    color: var(--color-text-soft);
+    text-align: center;
+    margin-top: 18px;
+    margin-bottom: 0;
+}
+
+.auth__troca-link {
+    color: var(--color-accent);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.auth__troca-link:hover {
+    text-decoration: underline;
+}
+
+.auth__dica {
+    font-size: 12.5px;
+    color: var(--color-text-muted);
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--color-border);
+    text-align: center;
+}
+
+.form-auth .form-label {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--color-text-soft);
+}
+
+.form-auth .form-control:focus,
+.form-auth .form-select:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 0.18rem rgba(233, 69, 96, 0.15);
+}
+
+.form-auth__msg {
+    font-size: 13.5px;
+    font-weight: 600;
+    margin: 0 0 4px;
+    min-height: 18px;
+}
+
+.form-auth__msg--erro { color: var(--color-accent); }
+.form-auth__msg--ok { color: #16a34a; }
+
+/* ---- CRUD de itens ---- */
+.crud__form-box,
+.crud__tabela-wrap {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 28px 30px;
+    box-shadow: var(--shadow-sm);
+}
+
+.crud__form-titulo {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: 18px;
+}
+
+.crud__acoes {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+}
+
+.crud__tabela {
+    margin: 0;
+}
+
+.crud__tabela thead th {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--color-text-muted);
+    border-bottom: 2px solid var(--color-border);
+}
+
+.crud__tabela td {
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.crud__item-nome {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.crud__item-thumb {
+    width: 40px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 6px;
+    background: #1a1a2e;
+}
+
+/* ---- Detalhes: topo com favorito ---- */
+.detalhe__topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.detalhe__topo .secao__titulo {
+    margin-bottom: 0;
+}
+
+.detalhe__topo .fav-btn {
+    position: static;
+}
+
+@media (max-width: 768px) {
+    .header__nav .header__dinamico {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        width: 100%;
+    }
+    .grafico__canvas-wrap { height: 300px; }
+    .grafico__box { padding: 20px; }
+    .auth__card { padding: 28px 22px; }
+    .catalogo__topo { flex-direction: column; align-items: stretch; }
+    .catalogo__pesquisa { max-width: none; }
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Itens - CineList</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+    <a href="index.html" class="header__logo text-decoration-none">
+        <span class="header__logo-icon">&#127916;</span> CineList
+    </a>
+    <nav class="header__nav" id="headerNav">
+        <a href="index.html#inicio" class="header__nav-link">Início</a>
+        <a href="index.html#catalogo" class="header__nav-link">Catálogo</a>
+        <a href="index.html#aluno" class="header__nav-link">Sobre</a>
+        <span class="header__dinamico" id="menuDinamico"></span>
+    </nav>
+    <button class="header__menu-toggle" id="menuToggle" aria-label="Abrir menu">&#9776;</button>
+</header>
+
+<main class="main container-fluid py-4 py-md-5">
+
+    <!-- Bloqueio para não-administradores -->
+    <div id="crudGuard" class="alert alert-warning text-center my-5 d-none">
+        <h4>Acesso restrito</h4>
+        <p>Esta área é exclusiva para administradores. Faça login com uma conta de administrador.</p>
+        <a href="login.html" class="btn btn-danger">Ir para o login</a>
+    </div>
+
+    <div id="crudConteudo" class="d-none">
+        <!-- Formulário de cadastro -->
+        <section class="crud mb-5">
+            <h2 class="secao__titulo">Cadastro de Item</h2>
+            <div class="crud__form-box">
+                <h5 class="crud__form-titulo" id="crudFormTitulo">Novo Item</h5>
+                <form id="formItem" class="form-auth">
+                    <input type="hidden" id="itemId">
+                    <div class="row g-3">
+                        <div class="col-12 col-md-6">
+                            <label for="itemNome" class="form-label">Nome *</label>
+                            <input type="text" class="form-control" id="itemNome" required>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <label for="itemCategoria" class="form-label">Categoria *</label>
+                            <select class="form-select" id="itemCategoria" required></select>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <label for="itemTipo" class="form-label">Tipo</label>
+                            <input type="text" class="form-control" id="itemTipo" placeholder="Filme / Série" value="Filme">
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <label for="itemGenero" class="form-label">Gênero</label>
+                            <input type="text" class="form-control" id="itemGenero" placeholder="Ex.: Romance / Drama">
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <label for="itemAno" class="form-label">Ano</label>
+                            <input type="number" class="form-control" id="itemAno" min="1900" max="2100">
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <label for="itemDuracao" class="form-label">Duração</label>
+                            <input type="text" class="form-control" id="itemDuracao" placeholder="Ex.: 1h 50min">
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <label for="itemDiretor" class="form-label">Direção</label>
+                            <input type="text" class="form-control" id="itemDiretor">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="itemElenco" class="form-label">Elenco</label>
+                            <input type="text" class="form-control" id="itemElenco">
+                        </div>
+
+                        <div class="col-6 col-md-3">
+                            <label for="itemIdioma" class="form-label">Idioma</label>
+                            <input type="text" class="form-control" id="itemIdioma" placeholder="Inglês">
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <label for="itemClassificacao" class="form-label">Classificação</label>
+                            <input type="text" class="form-control" id="itemClassificacao" placeholder="Livre / 12 / 16">
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <label for="itemNota" class="form-label">Nota (0-10)</label>
+                            <input type="number" class="form-control" id="itemNota" min="0" max="10" step="0.1">
+                        </div>
+                        <div class="col-6 col-md-3 d-flex align-items-end">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="itemDestaque">
+                                <label class="form-check-label" for="itemDestaque">Em destaque (carrossel)</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="itemImagem" class="form-label">URL do pôster (imagem principal)</label>
+                            <input type="url" class="form-control" id="itemImagem" placeholder="https://...">
+                        </div>
+                        <div class="col-12">
+                            <label for="itemDescricao" class="form-label">Descrição curta</label>
+                            <input type="text" class="form-control" id="itemDescricao">
+                        </div>
+                        <div class="col-12">
+                            <label for="itemConteudo" class="form-label">Sinopse</label>
+                            <textarea class="form-control" id="itemConteudo" rows="3"></textarea>
+                        </div>
+                    </div>
+
+                    <p id="itemMsg" class="form-auth__msg mt-3"></p>
+
+                    <div class="crud__acoes">
+                        <button type="submit" class="btn auth__btn" id="btnSalvarItem">Inserir</button>
+                        <button type="button" class="btn auth__btn--ghost" id="btnLimparItem">Limpar</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Listagem de itens -->
+        <section class="crud-lista">
+            <h2 class="secao__titulo">Listagem de Itens</h2>
+            <div class="crud__tabela-wrap">
+                <table class="table align-middle crud__tabela">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Título</th>
+                            <th>Categoria</th>
+                            <th>Ano</th>
+                            <th>Nota</th>
+                            <th class="text-end">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="itensTbody">
+                        <tr><td colspan="6" class="text-center py-4">Carregando...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+</main>
+
+<footer class="footer">
+    <div class="footer__content">
+        <div class="footer__info">
+            <p class="footer__text">&copy; 2026 CineList - Organize seus filmes e séries favoritos</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/scripts/app.js"></script>
+</body>
+</html>
